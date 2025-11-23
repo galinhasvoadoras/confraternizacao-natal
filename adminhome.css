@@ -1,0 +1,138 @@
+/* ===== FUNDO DA PÁGINA ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background-color: #0f172a; /* azul muito escuro */
+  color: #cbd5e1; /* cinza claro para o texto padrão */
+  display: flex;
+  justify-content: center;
+  min-height: 100vh;
+}
+
+/* ===== CONTAINER PRINCIPAL ===== */
+.box {
+  background-color: #1e293b; /* azul escuro secundário */
+  padding: 30px;
+  border-radius: 12px;
+  max-width: 900px;
+  width: 90%;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.3);
+}
+
+/* ===== TÍTULOS ===== */
+h2 {
+  font-size: 2rem;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 20px;
+}
+
+h3 {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #ffffff;
+  margin-top: 30px;
+  margin-bottom: 12px;
+}
+
+/* ===== BOTÕES ===== */
+button {
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+  margin: 5px 0;
+}
+
+#btnReset {
+  background-color: #ef4444; /* vermelho */
+  color: #ffffff;
+}
+
+#btnReset:hover {
+  filter: brightness(1.2);
+}
+
+#btnSairAdmin {
+  background-color: #3b82f6; /* azul */
+  color: #ffffff;
+}
+
+#btnSairAdmin:hover {
+  filter: brightness(1.2);
+}
+
+/* ===== LISTA DE USUÁRIOS ===== */
+#listaUsuarios {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+#listaUsuarios li {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #0f172a; /* fundo escuro primário */
+  border-bottom: 1px solid #334155; /* divisor */
+  padding: 12px 16px;
+  border-radius: 6px;
+  margin-bottom: 8px;
+  transition: background-color 0.3s ease;
+}
+
+#listaUsuarios li:hover {
+  background-color: #334155; /* hover sutil */
+}
+
+/* ===== NOME DO USUÁRIO ===== */
+.userName {
+  font-weight: 600;
+  color: #ffffff;
+  font-size: 1.1rem;
+}
+
+/* ===== BOTÕES DENTRO DA LISTA ===== */
+#listaUsuarios li button {
+  margin-left: 8px;
+  padding: 6px 12px;
+  font-size: 0.9rem;
+  border-radius: 6px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+#listaUsuarios li .btnRemove {
+  background-color: #ef4444; /* vermelho apagar */
+  color: #ffffff;
+}
+
+#listaUsuarios li .btnRemove:hover {
+  filter: brightness(1.2);
+}
+
+#listaUsuarios li .btnEdit {
+  background-color: #475569; /* cinza */
+  color: #cbd5e1;
+}
+
+#listaUsuarios li .btnEdit:hover {
+  filter: brightness(1.2);
+}
+
+/* ===== RESPONSIVO ===== */
+@media (max-width: 600px) {
+  #listaUsuarios li {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #listaUsuarios li button {
+    margin: 6px 4px 0 0;
+  }
+}
+

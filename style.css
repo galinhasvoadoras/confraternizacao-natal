@@ -1,0 +1,203 @@
+/* ===== FUNDO DA PÁGINA ===== */
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', sans-serif;
+  background: url('img/fundo.png') center/cover no-repeat fixed; /* fundo fixo */
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ===== CONTÊINER PRINCIPAL (LOGIN/CADASTRO) ===== */
+.box {
+  background: rgba(255, 255, 255, 0.1); /* vidro leve */
+  backdrop-filter: blur(10px); /* efeito frosted glass */
+  border-radius: 24px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.2), 0 0 20px rgba(255,255,255,0.2) inset;
+  padding: 30px 25px;
+  max-width: 400px; /* largura máxima */
+  width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 15px 0;
+  border: 1px solid rgba(255,255,255,0.3); /* leve contorno de luz */
+}
+
+/* ===== TÍTULOS ===== */
+.box h2 {
+  font-size: 1.75rem; /* 28px */
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: #ffffff;
+  text-align: center;
+  text-shadow: 0 0 8px rgba(0,0,0,0.4); /* profundidade */
+}
+
+/* ===== CAMPOS DE INPUT E SELECT (ESTILO BASE) ===== */
+input[type="text"], 
+input[type="password"],
+.box select { /* Inclui o select de seleção única */
+  width: 100%;
+  padding: 12px 16px;
+  margin-bottom: 12px;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  background-color: rgba(255, 255, 255, 0.2); /* transparente sobre vidro */
+  font-size: 1rem;
+  color: #ffffff;
+  /* Essencial para SELECT: remove a seta padrão do navegador e mantém o estilo */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  cursor: pointer;
+  box-sizing: border-box; 
+}
+
+/* Estilo para as opções (o usuário só verá isso ao clicar e abrir o dropdown) */
+.box select option {
+    background: #1e293b; /* Fundo escuro para destacar opções do select */
+    color: #ffffff;
+    padding: 6px 0;
+}
+
+/* ===== FOCO NOS CAMPOS (INPUTS E SELECTS) ===== */
+.box input:focus,
+.box select:focus {
+  outline: none;
+  border-color: #FFCC00; /* luz dourada */
+  box-shadow: 0 0 8px rgba(255,204,0,0.5);
+}
+/* ===== BOTÕES ===== */
+button {
+  width: 100%;
+  padding: 14px 0;
+  font-weight: 700;
+  font-size: 1.125rem;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  margin-bottom: 10px;
+}
+
+/* Botões principais (azul natalino) */
+#btnCadastrar, #btnLogin, #btnAdminConfirmar {
+  background-color: #3498db; /* azul vibrante */
+  color: #fff;
+  box-shadow: 0 5px 15px rgba(52,152,219,0.4);
+}
+
+#btnCadastrar:hover, #btnLogin:hover, #btnAdminConfirmar:hover {
+  background-color: #2980b9;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(52,152,219,0.6);
+}
+
+/* Botão alternar login/cadastro */
+.alternarBtn {
+  background: none;
+  color: #FFCC00; /* dourado */
+  border: none;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+.alternarBtn:hover {
+  text-decoration: underline;
+}
+
+/* ===== ÁREA DE LOGIN/CADASTRO ESCONDIDA ===== */
+.escondido {
+  display: none;
+}
+
+/* ===== ADMIN BOX discreto e elegante ===== */
+.adminBox {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background: rgba(255,255,255,0); /* totalmente transparente */
+  color: rgba(255,255,255,0.4); /* quase imperceptível */
+  font-size: 0.85rem;
+  padding: 6px 10px;
+  border: 1px solid rgba(255,255,255,0.3); /* leve contorno fantasma */
+  border-radius: 6px;
+  cursor: pointer;
+  z-index: 1000; /* visível sem sobrepor inputs */
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(5px); /* leve efeito vidro */
+}
+
+/* Ao passar o mouse: destacar */
+.adminBox:hover {
+  background-color: rgba(255,255,255,0.15);
+  color: #fff;
+  border-color: #FFCC00; /* borda dourada */
+  transform: scale(1.05);
+}
+
+/* Ícone ou texto dentro do botão */
+.adminBox button#btnAdminAbrir {
+  background: none;
+  border: none;
+  color: inherit;
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0;
+}
+
+/* ADMIN BOX INPUT escondido inicialmente */
+#adminSenhaBox {
+  position: fixed; /* fora do fluxo da página */
+  top: 40px;
+  right: 10px;
+  display: none; /* só aparece ao clicar no botão admin */
+  flex-direction: column;
+  align-items: center;
+  z-index: 999;
+}
+
+#adminSenhaBox input {
+  width: 140px;
+  background-color: rgba(255,255,255,0.15);
+  color: #fff;
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 6px;
+  padding: 8px;
+  margin-top: 5px;
+}
+/* ===== ABAS (futuro login/cadastro alternando) ===== */
+.abas {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.aba {
+  font-size: 1.125rem;
+  font-weight: 500;
+  padding: 0.5rem 1rem;
+  cursor: pointer;
+  color: rgba(255,255,255,0.6);
+  border-bottom: 2px solid transparent;
+  transition: all 0.3s ease;
+}
+
+.aba.ativa {
+  color: #FFCC00;
+  font-weight: 600;
+  border-bottom: 2px solid #FFCC00;
+}
+
+.aba:hover {
+  transform: translateY(-2px);
+}

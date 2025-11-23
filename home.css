@@ -1,0 +1,168 @@
+/* --------------------------------------------------
+   FUNDO DA PÁGINA
+-------------------------------------------------- */
+body {
+  min-height: 100vh;
+  margin: 0;
+  padding-top: 40px;
+  font-family: inherit;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
+  background: url("img/fundo.png") no-repeat center center fixed;
+  background-size: cover;
+  position: relative;
+}
+
+/* leve escurecida para destacar elementos */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.28);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* --------------------------------------------------
+   TÍTULO PRINCIPAL (AGORA FUNCIONANDO)
+-------------------------------------------------- */
+h1 {
+  font-size: 90px;
+  font-weight: 700;
+  color: #ffffff;
+  text-align: center;
+  margin-bottom: 30px;
+  text-shadow: 0 0 10px rgba(255,255,255,0.6);
+}
+
+/* --------------------------------------------------
+   MENU DE BOTÕES (EM COLUNA, UM POR LINHA)
+-------------------------------------------------- */
+.menuHome {
+  display: flex;
+  flex-direction: column;  /* <<< um em cada linha */
+  gap: 22px;
+  justify-content: center;
+  align-items: center;
+  margin-top: 6px;
+}
+
+/* estilo base dos botões */
+.botaoHome {
+  display: block;
+  width: 260px;
+  text-align: center;
+  padding: 18px 0;
+  font-size: 1.25rem;
+  border-radius: 14px;
+  font-weight: 700;
+  text-decoration: none;
+  color: white;
+  transition: transform 0.22s ease, box-shadow 0.22s ease;
+}
+
+/* --- BOTÃO 1: Azul escuro com glow azul --- */
+.botaoHome:nth-child(1) {
+  background: #0b3a73;
+  box-shadow: 0 0 18px rgba(0, 110, 255, 0.55);
+}
+.botaoHome:nth-child(1):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 28px rgba(0, 140, 255, 0.85);
+}
+
+/* --- BOTÃO 2: Verde com glow verde --- */
+.botaoHome:nth-child(2) {
+  background: #0f5f3a;
+  box-shadow: 0 0 18px rgba(0, 255, 150, 0.45);
+}
+.botaoHome:nth-child(2):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 28px rgba(0, 255, 150, 0.75);
+}
+
+/* --- BOTÃO 3: Dourado com glow dourado --- */
+.botaoHome:nth-child(3) {
+  background: linear-gradient(135deg, #d4a027, #f6cd55);
+  color: #3b2a00;
+  box-shadow: 0 0 18px rgba(255, 223, 120, 0.55);
+}
+.botaoHome:nth-child(3):hover {
+  transform: translateY(-4px);
+  box-shadow: 0 0 32px rgba(255, 223, 120, 0.85);
+}
+
+/* --------------------------------------------------
+   BOTÃO SAIR — discreto ferrugem no rodapé
+-------------------------------------------------- */
+#btnSair {
+  position: fixed;
+  bottom: 14px;
+  left: 50%;
+  transform: translateX(-50%);
+  padding: 12px 22px;
+  border-radius: 10px;
+  background: #6d2c2c; /* ferrugem discreto */
+  color: #f5d7d7;
+  border: 1px solid rgba(255,255,255,0.1);
+  cursor: pointer;
+  z-index: 1000;
+  font-weight: bold;
+  opacity: 0.9;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.28);
+}
+
+#btnSair:hover {
+  background: #7a2f2f;
+  transform: translateX(-50%) translateY(-3px);
+}
+
+/* --------------------------------------------------
+   TRENÓ ANIMADO
+-------------------------------------------------- */
+.trenoVoando {
+  position: fixed;
+  left: -350px;
+  bottom: 5%;
+  width: 300px;
+  z-index: 900;
+  pointer-events: none;
+  animation: vooTreno 12s linear infinite;
+}
+
+.trenoVoando img.trenoImg {
+  width: 100%;
+  transform-origin: center;
+  animation: ventoOndulado 2.4s ease-in-out infinite;
+}
+
+/* movimento do trenó */
+@keyframes vooTreno {
+  0%   { transform: translate(0,0) rotate(-2deg) scaleX(-1); opacity: 0; }
+  10%  { opacity: 1; }
+  50%  { transform: translate(130vw, -20vh) rotate(3deg) scaleX(-1); opacity: 1; }
+  90%  { opacity: 1; }
+  100% { transform: translate(160vw, -25vh) rotate(5deg) scaleX(-1); opacity: 0; }
+}
+
+/* vento suave */
+@keyframes ventoOndulado {
+  0%   { transform: translateY(0) translateX(0); }
+  20%  { transform: translateY(-10px) translateX(4px); }
+  40%  { transform: translateY(0) translateX(0); }
+  60%  { transform: translateY(10px) translateX(-4px); }
+  80%  { transform: translateY(-6px) translateX(2px); }
+  100% { transform: translateY(0) translateX(0); }
+}
+
+/* --------------------------------------------------
+   RESPONSIVO
+-------------------------------------------------- */
+@media (max-width: 640px) {
+  .trenoVoando { width: 200px; bottom: 6vh; }
+  h1 { font-size: 2.4rem; }
+  .menuHome { gap: 14px; }
+}

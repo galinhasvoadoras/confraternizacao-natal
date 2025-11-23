@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Cadastro e Login</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- ÁREA DE CADASTRO -->
+  <div id="cadastroBox" class="box">
+    <h2>Cadastro</h2>
+
+    <input type="text" id="cadNome" placeholder="Nome">
+
+<select id="cadPersonalidade" required>
+      <option value="" disabled selected>Escolha sua Personalidade</option>
+      <option value="Elegante / Clássica">Elegante / Clássica</option>
+      <option value="Artística / Criativa">Artística / Criativa</option>
+      <option value="Exótica / Aventureira">Exótica / Aventureira</option>
+      <option value="Extrovertida / Sociável">Extrovertida / Sociável</option>
+      <option value="Tímida / Reservada">Tímida / Reservada</option>
+      <option value="Geek / Tecnológica">Geek / Tecnológica</option>
+      <option value="Minimalista / Prática">Minimalista / Prática</option>
+      <option value="Romântica / Sonhadora">Romântica / Sonhadora</option>
+    </select>
+
+    <select id="cadCor" required>
+      <option value="" disabled selected>Escolha sua Cor favorita</option>
+      <option value="Branco">Branco</option>
+      <option value="Preto">Preto</option>
+      <option value="Cinza">Cinza</option>
+      <option value="Bege / Creme">Bege / Creme</option>
+      <option value="Marrom">Marrom</option>
+      <option value="Vermelho">Vermelho</option>
+      <option value="Azul">Azul</option>
+      <option value="Verde">Verde</option>
+      <option value="Amarelo">Amarelo</option>
+      <option value="Laranja">Laranja</option>
+      <option value="Rosa">Rosa</option>
+      <option value="Roxo">Roxo</option>
+    </select>
+    
+    <select id="cadHobby" required>
+      <option value="" disabled selected>Escolha seu Hobby / Interesse</option>
+      <option value="Leitura / Literatura">Leitura / Literatura</option>
+      <option value="Esportes / Fitness">Esportes / Fitness</option>
+      <option value="Tecnologia / Jogos">Tecnologia / Jogos</option>
+      <option value="Artesanato / DIY">Artesanato / DIY</option>
+      <option value="Música / Instrumentos">Música / Instrumentos</option>
+      <option value="Culinária / Gastronomia">Culinária / Gastronomia</option>
+      <option value="Jardinagem / Natureza">Jardinagem / Natureza</option>
+      <option value="Viagens / Experiências">Viagens / Experiências</option>
+      <option value="Cinema / Séries / Cultura Pop">Cinema / Séries / Cultura Pop</option>
+      <option value="Bem-estar / Mindfulness">Bem-estar / Mindfulness</option>
+    </select>
+    
+    <input type="password" id="cadSenha" placeholder="Senha">
+
+    <button id="btnCadastrar">Cadastrar</button>
+
+    <button id="btnMostrarLogin" class="alternarBtn">Já tenho conta</button>
+  </div>
+
+  <!-- ÁREA DE LOGIN -->
+  <div id="loginBox" class="box escondido">
+    <h2>Login</h2>
+
+    <input type="text" id="loginNome" placeholder="Nome">
+    <input type="password" id="loginSenha" placeholder="Senha">
+
+    <button id="btnLogin">Entrar</button>
+
+    <button id="btnMostrarCadastro" class="alternarBtn">Criar conta</button>
+  </div>
+
+  <!-- ÁREA ADMIN -->
+  <div id="adminBox" class="adminBox"> <!-- removida a classe box -->
+    <button id="btnAdminAbrir">Admin</button>
+
+    <!-- Caixa de senha -->
+    <div id="adminSenhaBox" class="escondido">
+      <input type="password" id="adminSenha" placeholder="Senha do administrador">
+      <button id="btnAdminConfirmar">Entrar</button>
+    </div>
+  </div>
+
+<script type="module" src="script.js"></script>
+
+
+</body>
+</html>

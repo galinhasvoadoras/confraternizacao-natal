@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Pix</title>
+  
+  <link rel="stylesheet" href="pag3.css">
+</head>
+<body>
+
+  <!-- Fundo do site -->
+  <div class="pixFundo"></div>
+
+  <!-- Comprovante Pix -->
+  <div class="comprovantePix">
+
+    <!-- HEADER -->
+    <div class="headerPix">
+      <div class="checkIcon">✔</div>
+      <h1>Transferência Pix</h1>
+      <p>Banco da confraternizacao</p>
+    </div>
+
+    <!-- VALOR -->
+    <div class="valorPixBox">
+      <label>Saldo atual:</label>
+      <div class="valorGrande">R$ <span id="saldoValor">0</span></div>
+    </div>
+
+    <!-- QUEM PAGA -->
+    <div class="secaoPix">
+<p><span><strong>Nome: </strong></span>  <span id="quemPagaNome"></span></p>
+     </div>
+    <!-- HISTÓRICO -->
+    <div class="secaoPix">
+      <h3>Extrato financeiro</h3>
+      <ul id="listaHistorico"></ul>
+    </div>
+
+    <!-- FORMULARIO -->
+    <div class="formPix">
+      <input type="number" id="inputValor" placeholder="Digite o valor">
+    </div>
+
+    <!-- BOTÕES -->
+    <div class="botoesPix">
+      <button id="btnEnviar" class="btnPrimario">Enviar</button>
+      <button id="btnVoltarHome" class="btnSecundario">Voltar</button>
+    </div>
+
+  </div>
+
+  <!-- GIF de nota voando -->
+  <img src="img/m.webp" class="notaVoando nota1">
+
+<script type="module" src="script.js"></script>
+
+</body>
+</html>
