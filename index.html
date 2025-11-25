@@ -13,17 +13,30 @@
 
     <input type="text" id="cadNome" placeholder="Nome">
 
-<select id="cadPersonalidade" required>
-      <option value="" disabled selected>Escolha sua Personalidade</option>
-      <option value="Elegante / Clássica">Elegante / Clássica</option>
-      <option value="Artística / Criativa">Artística / Criativa</option>
-      <option value="Exótica / Aventureira">Exótica / Aventureira</option>
-      <option value="Extrovertida / Sociável">Extrovertida / Sociável</option>
-      <option value="Tímida / Reservada">Tímida / Reservada</option>
-      <option value="Geek / Tecnológica">Geek / Tecnológica</option>
-      <option value="Minimalista / Prática">Minimalista / Prática</option>
-      <option value="Romântica / Sonhadora">Romântica / Sonhadora</option>
-    </select>
+<div class="personalidade-selection-container">
+      <button type="button" id="btnAbrirPersonalidade" class="input-like-btn">
+        Selecione sua Personalidade (Múltipla Escolha)
+      </button>
+
+      <div id="personalidadeCheckboxes" class="checkbox-area escondido">
+        <label title="Confortável, simples e prático no dia a dia."><input type="checkbox" name="personalidade" value="Casual"> Casual</label>
+        <label title="Linhas limpas, cores neutras e poucos detalhes."><input type="checkbox" name="personalidade" value="Minimalista"> Minimalista</label>
+        <label title="Visual ativo, roupas leves e funcionais."><input type="checkbox" name="personalidade" value="Esportiva"> Esportiva</label>
+        <label title="Tradicional e atemporal, peças estruturadas."><input type="checkbox" name="personalidade" value="Clássica"> Clássica</label>
+        <label title="Sofisticado, refinado e sempre alinhado."><input type="checkbox" name="personalidade" value="Elegante"> Elegante</label>
+        <label title="Leve, fluido, com toque natural e artístico."><input type="checkbox" name="personalidade" value="Natural"> Natural</label>
+        <label title="Prático, resistente, vibe exploradora."><input type="checkbox" name="personalidade" value="Aventureira"> Aventureira</label>
+        <label title="Atual, estilosa e ligada às tendências."><input type="checkbox" name="personalidade" value="Moderna"> Moderna</label>
+        <label title="Inspirado em décadas passadas, visual nostálgico."><input type="checkbox" name="personalidade" value="Retrô"> Retrô</label>
+        <label title="Mistura cores, estampas e ideias fora do comum."><input type="checkbox" name="personalidade" value="Criativa"> Criativa</label>
+        <label title="Estilo único, ousado e cheio de personalidade."><input type="checkbox" name="personalidade" value="Artística"> Artística</label>
+        <label title="Peças marcantes, looks fortes e chamativos."><input type="checkbox" name="personalidade" value="Ousada"> Ousada</label>
+        <label title="Voltado para cultura pop, gaming ou tecnologia."><input type="checkbox" name="personalidade" value="Tecnológica"> Tecnológica</label>
+        <label title="Delicado, cores suaves e estética meiga."><input type="checkbox" name="personalidade" value="Fofo / Kawaii"> Fofo / Kawaii</label>
+        <label title="Estampas geeks, referências pop e visual intelectual."><input type="checkbox" name="personalidade" value="Nerd"> Nerd</label>
+        <label title="Colorido, simples, inspirado em desenhos e vibe juvenil"><input type="checkbox" name="personalidade" value="Infantil / Lúdico"> Infantil / Lúdico</label>
+      </div>
+    </div>
 
     <select id="cadCor" required>
       <option value="" disabled selected>Escolha sua Cor favorita</option>
@@ -41,19 +54,34 @@
       <option value="Roxo">Roxo</option>
     </select>
     
-    <select id="cadHobby" required>
-      <option value="" disabled selected>Escolha seu Hobby / Interesse</option>
-      <option value="Leitura / Literatura">Leitura / Literatura</option>
-      <option value="Esportes / Fitness">Esportes / Fitness</option>
-      <option value="Tecnologia / Jogos">Tecnologia / Jogos</option>
-      <option value="Artesanato / DIY">Artesanato / DIY</option>
-      <option value="Música / Instrumentos">Música / Instrumentos</option>
-      <option value="Culinária / Gastronomia">Culinária / Gastronomia</option>
-      <option value="Jardinagem / Natureza">Jardinagem / Natureza</option>
-      <option value="Viagens / Experiências">Viagens / Experiências</option>
-      <option value="Cinema / Séries / Cultura Pop">Cinema / Séries / Cultura Pop</option>
-      <option value="Bem-estar / Mindfulness">Bem-estar / Mindfulness</option>
-    </select>
+  <div class="hobby-selection-container">
+      <button type="button" id="btnAbrirHobby" class="input-like-btn">
+        Selecione seus Interesses
+      </button>
+
+      <div id="hobbyCheckboxes" class="checkbox-area escondido">
+        <label><input type="checkbox" name="hobby" value="Leitura"> Leitura</label>
+        <label><input type="checkbox" name="hobby" value="Escrita"> Escrita</label>
+        <label><input type="checkbox" name="hobby" value="Desenho"> Desenho</label>
+        <label><input type="checkbox" name="hobby" value="Pintura"> Pintura</label>
+        <label><input type="checkbox" name="hobby" value="Artesanato / DIY"> Artesanato / DIY</label>
+        <label><input type="checkbox" name="hobby" value="Costura"> Costura</label>
+        <label><input type="checkbox" name="hobby" value="Música"> Música</label>
+        <label><input type="checkbox" name="hobby" value="Culinária"> Culinária</label>
+        <label><input type="checkbox" name="hobby" value="Jardinagem"> Jardinagem</label>
+        <label><input type="checkbox" name="hobby" value="Jogos"> Jogos</label>
+        <label><input type="checkbox" name="hobby" value="Tecnologia"> Tecnologia</label>
+        <label><input type="checkbox" name="hobby" value="Fotografia / Vídeo"> Fotografia / Vídeo</label>
+        <label><input type="checkbox" name="hobby" value="Moda"> Moda</label>
+        <label><input type="checkbox" name="hobby" value="Maquiagem"> Maquiagem</label>
+        <label><input type="checkbox" name="hobby" value="Idiomas"> Idiomas</label>
+        <label><input type="checkbox" name="hobby" value="Estudos"> Estudos</label>
+        <label><input type="checkbox" name="hobby" value="Colecionismo"> Colecionismo</label>
+        <label><input type="checkbox" name="hobby" value="Cuidados com pets"> Cuidados com pets</label>
+        <label><input type="checkbox" name="hobby" value="Brinquedos (para crianças)"> Brinquedos (para crianças)</label>
+        <label><input type="checkbox" name="hobby" value="Esportes"> Esportes</label>
+      </div>
+    </div>
     
     <input type="password" id="cadSenha" placeholder="Senha">
 
