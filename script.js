@@ -50,7 +50,51 @@ const btnVoltarHome = document.getElementById("btnVoltarHome");
 if (btnVoltarHome) {
     btnVoltarHome.addEventListener("click", () => window.location.href = "home.html");
 }
+// ===========================================
+// NOVO: LÓGICA DE POP-UPS (PERSONALIDADE E HOBBY)
+// ===========================================
 
+// --- Funcionalidade de Popup Personalidade ---
+const btnAbrirPersonalidade = document.getElementById("btnAbrirPersonalidade");
+const personalidadeCheckboxes = document.getElementById("personalidadeCheckboxes");
+
+if (btnAbrirPersonalidade && personalidadeCheckboxes) {
+  btnAbrirPersonalidade.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impede que o clique seja propagado e feche imediatamente
+    personalidadeCheckboxes.classList.toggle("escondido");
+  });
+  
+  // Fechar ao clicar fora do container
+  document.addEventListener("click", (e) => {
+      const persContainer = document.querySelector(".personalidade-selection-container");
+      if (persContainer && !persContainer.contains(e.target) && !personalidadeCheckboxes.classList.contains("escondido")) {
+          personalidadeCheckboxes.classList.add("escondido");
+      }
+  });
+}
+
+// --- Funcionalidade de Popup Hobby ---
+const btnAbrirHobby = document.getElementById("btnAbrirHobby");
+const hobbyCheckboxes = document.getElementById("hobbyCheckboxes");
+
+if (btnAbrirHobby && hobbyCheckboxes) {
+  btnAbrirHobby.addEventListener("click", (e) => {
+    e.stopPropagation(); // Impede que o clique seja propagado e feche imediatamente
+    hobbyCheckboxes.classList.toggle("escondido");
+  });
+  
+  // Fechar ao clicar fora
+  document.addEventListener("click", (e) => {
+      const hobbyContainer = document.querySelector(".hobby-selection-container");
+      if (hobbyContainer && !hobbyContainer.contains(e.target) && !hobbyCheckboxes.classList.contains("escondido")) {
+          hobbyCheckboxes.classList.add("escondido");
+      }
+  });
+}
+
+// ===========================================
+// FIM DA LÓGICA DE POP-UPS
+// ===========================================
 // ======================================================
 // 2. TELA DE LOGIN / CADASTRO (index.html)
 // ======================================================
