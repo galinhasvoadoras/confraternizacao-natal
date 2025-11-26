@@ -217,30 +217,48 @@ document.getElementById("btnCadastrar").addEventListener("click", async () => {
         }
     });
 
-// --- ADMIN ---
+// ======================================================
+// LÓGICA DO ADMIN (MOVIDA PARA FORA PARA GARANTIR EXECUÇÃO)
+// ======================================================
+document.addEventListener("DOMContentLoaded", () => {
+    
     const btnAdminAbrir = document.getElementById("btnAdminAbrir");
-    if (btnAdminAbrir) {
-        btnAdminAbrir.addEventListener("click", () => {
-            const box = document.getElementById("adminSenhaBox");
-            if (box) box.style.display = "flex";
-        });
-    }
-
+    const adminSenhaBox = document.getElementById("adminSenhaBox");
     const btnAdminConfirmar = document.getElementById("btnAdminConfirmar");
-    if (btnAdminConfirmar) {
-        btnAdminConfirmar.addEventListener("click", () => {
-            const senhaAdmin = document.getElementById("adminSenha").value;
+
+    // 1. Botão para abrir a caixinha de senha
+    if (btnAdminAbrir) {
+        btnAdminAbrir.addEventListener("click", (e) => {
+            e.preventDefault(); // Evita recarregamento se estiver dentro de form
             
-            if (senhaAdmin === "369") {
-                // AQUI ESTÁ O TRUQUE: Salvamos que o admin entrou
-                sessionStorage.setItem("adminLogado", "true");
-                window.location.href = "adminhome.html";
-            } else {
-                alert("Senha incorreta");
+            if (adminSenhaBox) {
+                // Remove a classe 'escondido' se ela existir, ou alterna display
+                if (adminSenhaBox.classList.contains("escondido")) {
+                    adminSenhaBox.classList.remove("escondido");
+                    adminSenhaBox.style.display = "flex"; // Garante que apareça
+                } else {
+                    adminSenhaBox.classList.add("escondido");
+                    adminSenhaBox.style.display = "none";
+                }
             }
         });
     }
-}
+
+    // 2. Botão para confirmar a senha
+    if (btnAdminConfirmar) {
+        btnAdminConfirmar.addEventListener("click", (e) => {
+            e.preventDefault();
+            const senhaAdmin = document.getElementById("adminSenha").value;
+            
+            if (senhaAdmin === "369") {
+                sessionStorage.setItem("adminLogado", "true");
+                window.location.href = "adminhome.html";
+            } else {
+                alert("Senha incorreta!");
+            }
+        });
+    }
+});
 // ======================================================
 // 3. SORTEIO (pag.html)
 // ======================================================
