@@ -216,7 +216,7 @@ document.getElementById("btnCadastrar").addEventListener("click", async () => {
             alert("Erro no login.");
         }
     });
-
+} // <--- FECHAMENTO DO IF (cadastroBox)
 // ======================================================
 // LÓGICA DO ADMIN (MOVIDA PARA FORA PARA GARANTIR EXECUÇÃO)
 // ======================================================
