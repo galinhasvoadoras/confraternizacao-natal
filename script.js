@@ -4,6 +4,7 @@ import { db, collection, addDoc, getDocs, deleteDoc, doc, updateDoc, query, wher
 // 1. UTILITÁRIOS GERAIS (Login e Sessão)
 // ======================================================
 
+
 // Pega o ID do usuário salvo na sessão (navegador)
 function getMyID() {
     return sessionStorage.getItem("usuarioLogadoID");
