@@ -116,57 +116,79 @@ if (cadastroBox) { // Estamos na tela de Login/Cadastro
         cadastroBox.classList.remove("escondido");
     });
 
-    // --- CADASTRAR ---
-    document.getElementById("btnCadastrar").addEventListener("click", async () => {
-        // Campos de Input
-        const nome = document.getElementById("cadNome").value.trim();
-        const senha = document.getElementById("cadSenha").value.trim();
+  // --- CADASTRAR (CÓDIGO SUBSTITUÍDO) ---
+document.getElementById("btnCadastrar").addEventListener("click", async () => {
+    // Campos de Input Simples
+    const nome = document.getElementById("cadNome").value.trim();
+    const senha = document.getElementById("cadSenha").value.trim();
+    
+    // Leitura do campo de Seleção Única (Cor)
+    const cor = document.getElementById("cadCor").value;
+
+    // 1. Coletar Personalidades (Múltipla Escolha)
+    const selectedPersonalidadeInputs = document.querySelectorAll('#personalidadeCheckboxes input[name="personalidade"]:checked');
+    const selectedPersonalidades = Array.from(selectedPersonalidadeInputs).map(input => input.value);
+    
+    // 2. Coletar Hobbies (Múltipla Escolha)
+    const selectedHobbyInputs = document.querySelectorAll('#hobbyCheckboxes input[name="hobby"]:checked');
+    const selectedHobbies = Array.from(selectedHobbyInputs).map(input => input.value);
+
+    // Validação Mínima
+    if (!nome || !senha) return alert("Preencha nome e senha!");
+    if (!cor) return alert("Por favor, escolha sua Cor Favorita.");
+    
+    // Validação Personalidade (Múltipla)
+    if (selectedPersonalidades.length === 0) {
+        alert("Por favor, selecione pelo menos uma personalidade.");
+        // Tenta reabrir o pop-up
+        const personalidadeCheckboxes = document.getElementById("personalidadeCheckboxes");
+        if (personalidadeCheckboxes) personalidadeCheckboxes.classList.remove("escondido"); 
+        return; 
+    }
+
+    // Validação Hobby (Múltipla)
+    if (selectedHobbies.length === 0) {
+        alert("Por favor, selecione pelo menos um interesse/hobby.");
+        // Tenta reabrir o pop-up
+        const hobbyCheckboxes = document.getElementById("hobbyCheckboxes");
+        if (hobbyCheckboxes) hobbyCheckboxes.classList.remove("escondido"); 
+        return; 
+    }
+
+    try {
+        // Verifica se nome já existe (mantido)
+        const q = query(collection(db, "usuarios"), where("nome", "==", nome));
+        const consulta = await getDocs(q);
         
-        // Leitura dos campos de Seleção Única (voltou a ser .value)
-        const personalidade = document.getElementById("cadPersonalidade").value;
-        const cor = document.getElementById("cadCor").value;
-        const hobby = document.getElementById("cadHobby").value;
-
-        // Validação Mínima
-        if (!nome || !senha) return alert("Preencha nome e senha!");
-        if (!cor) return alert("Por favor, escolha sua Cor Favorita.");
-        if (!personalidade) return alert("Por favor, escolha sua Personalidade.");
-        if (!hobby) return alert("Por favor, escolha seu Hobby.");
-
-
-        try {
-            // Verifica se nome já existe (mantido)
-            const q = query(collection(db, "usuarios"), where("nome", "==", nome));
-            const consulta = await getDocs(q);
-            
-            if (!consulta.empty) {
-                return alert("Já existe um usuário com esse nome.");
-            }
-
-            // Cria usuário no Banco
-            const docRef = await addDoc(collection(db, "usuarios"), {
-                nome: nome,
-                senha: senha,
-                hobby: hobby,
-                cor: cor,
-                personalidade: personalidade,
-                saldo: 1000,
-                historico: [],
-                amigoSorteado: "",  // ID de quem eu tirei
-                foiSorteado: false  // Se alguém já me tirou
-            });
-
-            // Salva na sessão e entra (mantido)
-            sessionStorage.setItem("usuarioLogadoID", docRef.id);
-            sessionStorage.setItem("usuarioNome", nome);
-            alert("Cadastrado com sucesso!");
-            window.location.href = "home.html";
-
-        } catch (error) {
-            console.error(error);
-            alert("Erro ao cadastrar. Verifique o console.");
+        if (!consulta.empty) {
+            return alert("Já existe um usuário com esse nome.");
         }
-    });
+
+        // Cria usuário no Banco (AGORA SALVANDO PERSONALIDADE E HOBBY COMO ARRAYS)
+        const docRef = await addDoc(collection(db, "usuarios"), {
+            nome: nome,
+            senha: senha,
+            hobby: selectedHobbies, // <<-- ARRAY
+            cor: cor,
+            personalidade: selectedPersonalidades, // <<-- ARRAY
+            saldo: 1000,
+            historico: [],
+            amigoSorteado: "",  
+            foiSorteado: false  
+        });
+
+        // Salva na sessão e entra (mantido)
+        sessionStorage.setItem("usuarioLogadoID", docRef.id);
+        sessionStorage.setItem("usuarioNome", nome);
+        alert("Cadastrado com sucesso!");
+        window.location.href = "home.html";
+
+    } catch (error) {
+        console.error(error);
+        alert("Erro ao cadastrar. Verifique o console.");
+    }
+});
+// --- FIM DO CADASTRAR ---
     // --- LOGIN ---
     document.getElementById("btnLogin").addEventListener("click", async () => {
         const nome = document.getElementById("loginNome").value.trim();
