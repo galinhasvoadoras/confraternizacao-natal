@@ -72,24 +72,25 @@ button {
   justify-content: center;
   align-items: center;
   box-sizing: border-box; 
-  overflow-wrap: break-word; /* Força quebra no container */
+  overflow-wrap: break-word; 
 }
 
 /* NOVO AJUSTE: Garante que o H3 não tenha margens extras e respeite o limite */
 #resultado h3 {
     margin: 0; 
-    width: 100%; /* Garante que ele use toda a largura disponível */
+    width: 100%; 
     padding: 0;
 }
 
-/* NOME SORTEADO (Já corrigido) */
+/* NOME SORTEADO (Ajustado para o SPAN dentro do H3) */
 #resultado h3 span { 
-  font-size: clamp(2rem, 5vw, 3rem); /* escala responsiva */
+  font-size: clamp(2rem, 5vw, 3rem); 
   color: #ffffff;
   animation: glow 1.5s ease-in-out infinite alternate;
   display: inline-block; 
   margin-top: 10px;
   max-width: 100%;
+  /* ✨ Alterado para break-all para ser mais agressivo na quebra do nome. */
   word-break: break-all; 
 }
 
@@ -98,8 +99,8 @@ button {
     /* Garante que o parágrafo respeite a largura do #resultado */
     width: 100%;
     
-    /* Isso faz o texto quebrar mesmo que não haja espaços (ex: tags separadas por vírgula) */
-    word-break: break-word; 
+    /* Isso garante quebra em qualquer caractere, ideal para listas de tags sem espaço */
+    word-break: break-all; 
     
     /* Zera margens laterais padrão para evitar estouro */
     margin-left: 0;
