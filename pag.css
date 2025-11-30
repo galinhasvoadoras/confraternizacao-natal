@@ -56,7 +56,7 @@ button {
   background-color: #162138;
 }
 
-/* ===== RESULTADO ===== */
+/* ===== RESULTADO (AJUSTADO) ===== */
 #resultado {
   margin: 30px 10px; /* margem lateral menor */
   padding: 20px;
@@ -72,17 +72,21 @@ button {
   justify-content: center;
   align-items: center;
   box-sizing: border-box; /* padding dentro da largura */
-  overflow-wrap: break-word; /* evita estouro com nomes longos */
+  /* Propriedade mantida e essencial para quebras no container */
+  overflow-wrap: break-word; 
 }
 
-/* NOME SORTEADO */
-#resultado strong {
+/* NOME SORTEADO (AJUSTADO PARA O SPAN DENTRO DO H3) */
+/* O JS está inserindo o nome dentro de <span> dentro de <h3>,
+   então o seletor #resultado strong não funciona. Corrigindo para o que é gerado. */
+#resultado h3 span { /* <--- ATENÇÃO AQUI: SELETOR CORRIGIDO! */
   font-size: clamp(2rem, 5vw, 3rem); /* escala responsiva */
   color: #ffffff;
   animation: glow 1.5s ease-in-out infinite alternate;
   display: inline-block;
   margin-top: 10px;
-  word-break: break-word; /* força quebra de nomes grandes */
+  /* ✨ ESSENCIAL: Garante quebra de nomes longos sem espaços */
+  word-break: break-all; 
 }
 
 @keyframes glow {
