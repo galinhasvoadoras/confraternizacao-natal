@@ -56,12 +56,12 @@ button {
   background-color: #162138;
 }
 
-/* ===== RESULTADO (AJUSTADO) ===== */
+/* ===== RESULTADO (CONTAINER) ===== */
 #resultado {
-  margin: 30px 10px; /* margem lateral menor */
+  margin: 30px 10px; 
   padding: 20px;
-  background-color: rgba(255, 255, 255, 0.1); /* leve brilho */
-  border: 3px dashed #ffcc00; /* bilhete premiado */
+  background-color: rgba(255, 255, 255, 0.1); 
+  border: 3px dashed #ffcc00; 
   border-radius: 12px;
   width: 90%;
   max-width: 480px;
@@ -71,23 +71,41 @@ button {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  box-sizing: border-box; /* padding dentro da largura */
-  /* Propriedade mantida e essencial para quebras no container */
-  overflow-wrap: break-word; 
+  box-sizing: border-box; 
+  overflow-wrap: break-word; /* Força quebra no container */
 }
 
-/* NOME SORTEADO (AJUSTADO PARA O SPAN DENTRO DO H3) */
-/* O JS está inserindo o nome dentro de <span> dentro de <h3>,
-   então o seletor #resultado strong não funciona. Corrigindo para o que é gerado. */
-#resultado h3 span { /* <--- ATENÇÃO AQUI: SELETOR CORRIGIDO! */
+/* NOVO AJUSTE: Garante que o H3 não tenha margens extras e respeite o limite */
+#resultado h3 {
+    margin: 0; 
+    width: 100%; /* Garante que ele use toda a largura disponível */
+    padding: 0;
+}
+
+/* NOME SORTEADO (Já corrigido) */
+#resultado h3 span { 
   font-size: clamp(2rem, 5vw, 3rem); /* escala responsiva */
   color: #ffffff;
   animation: glow 1.5s ease-in-out infinite alternate;
-  display: inline-block;
+  display: inline-block; 
   margin-top: 10px;
-  /* ✨ ESSENCIAL: Garante quebra de nomes longos sem espaços */
+  max-width: 100%;
   word-break: break-all; 
 }
+
+/* ✨ CORREÇÃO CRÍTICA PARA HOBBY e DICA (os parágrafos P) */
+#resultado p {
+    /* Garante que o parágrafo respeite a largura do #resultado */
+    width: 100%;
+    
+    /* Isso faz o texto quebrar mesmo que não haja espaços (ex: tags separadas por vírgula) */
+    word-break: break-word; 
+    
+    /* Zera margens laterais padrão para evitar estouro */
+    margin-left: 0;
+    margin-right: 0;
+}
+
 
 @keyframes glow {
   from { text-shadow: 0 0 5px #ffcc00; }
